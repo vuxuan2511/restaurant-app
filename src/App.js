@@ -6,10 +6,10 @@ import { Header, MainContainer, CreateContainer } from './components';
 
 const App = () => {
     return (
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
             <div className="w-screen h-auto flex flex-col">
                 <Header />
-                <main className="mt-24 p-8 w-full">
+                <main className="mt-16 px-4 md:mt-20  md:px-16 py-4 w-full">
                     <Routes>
                         <Route path="/*" element={<MainContainer />} />
                         <Route path="/createItem" element={<CreateContainer />} />
