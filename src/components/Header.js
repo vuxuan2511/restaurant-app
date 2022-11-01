@@ -41,6 +41,7 @@ const Header = () => {
             user: null,
         });
     };
+
     return (
         <header className="fixed w-full z-50 bg-slate-300 p-3 px-4 md:p-3 md:px-16">
             {/* table & pc */}
@@ -113,6 +114,7 @@ const Header = () => {
                                             className="px-3 py-2 items-center gap-2
                                              hover:bg-slate-100 transition-all duration-100 ease-in-out
                                              text-textColor text-base cursor-pointer flex hover:rounded-lg"
+                                            onClick={() => setIsMenu(false)}
                                         >
                                             New Item <MdAdd />
                                         </p>
@@ -169,6 +171,7 @@ const Header = () => {
                                         className="px-3 py-2 items-center gap-2
                                          hover:bg-slate-100 transition-all duration-100 ease-in-out
                                          text-textColor text-base cursor-pointer flex "
+                                        onClick={() => setIsMenu(false)}
                                     >
                                         New Item <MdAdd />
                                     </p>
@@ -179,6 +182,7 @@ const Header = () => {
                                     className="px-3 py-2 items-center gap-2
                                      hover:bg-slate-100 transition-all duration-100 ease-in-out
                                      text-textColor text-base cursor-pointer flex"
+                                    onClick={() => setIsMenu(false)}
                                 >
                                     Home
                                 </li>
@@ -186,6 +190,7 @@ const Header = () => {
                                     className="px-3 py-2 items-center gap-2
                                      hover:bg-slate-100 transition-all duration-100 ease-in-out
                                      text-textColor text-base cursor-pointer flex"
+                                    onClick={() => setIsMenu(false)}
                                 >
                                     Menu
                                 </li>
@@ -193,6 +198,7 @@ const Header = () => {
                                     className="px-3 py-2 items-center gap-2
                                      hover:bg-slate-100 transition-all duration-100 ease-in-out
                                      text-textColor text-base cursor-pointer flex"
+                                    onClick={() => setIsMenu(false)}
                                 >
                                     About Us
                                 </li>
@@ -200,6 +206,7 @@ const Header = () => {
                                     className="px-3 py-2 items-center gap-2
                                      hover:bg-slate-100 transition-all duration-100 ease-in-out
                                      text-textColor text-base cursor-pointer flex"
+                                    onClick={() => setIsMenu(false)}
                                 >
                                     Service
                                 </li>
