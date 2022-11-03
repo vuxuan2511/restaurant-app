@@ -16,9 +16,10 @@ const Header = () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    //
-    const [ismenu, setIsMenu] = useState(false);
-    const [{ user }, dispatch] = useStateValue();
+    const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
+
+    const [isMenu, setIsMenu] = useState(false);
+
     const login = async () => {
         if (!user) {
             const {
@@ -30,15 +31,24 @@ const Header = () => {
             });
             localStorage.setItem('user', JSON.stringify(providerData[0]));
         } else {
-            setIsMenu(!ismenu);
+            setIsMenu(!isMenu);
         }
     };
+
     const logout = () => {
         setIsMenu(false);
         localStorage.clear();
+
         dispatch({
             type: actionType.SET_USER,
             user: null,
+        });
+    };
+
+    const showCart = () => {
+        dispatch({
+            type: actionType.SET_CART_SHOW,
+            cartShow: !cartShow,
         });
     };
 
@@ -82,14 +92,13 @@ const Header = () => {
                             Service
                         </li>
                     </motion.ul>
-                    <div className="relative flex items-center justify-center">
-                        <MdShoppingCart className="text-textColor text-2xl cursor-pointer" />
-                        <div
-                            className="absolute -top-1 -right-2 w-5 h-5 rounded-full
-                             bg-cartNumBg items-center justify-center flex "
-                        >
-                            <div className="text-xs text-white font-semibold">2</div>
-                        </div>
+                    <div className="relative flex items-center justify-center" onClick={showCart}>
+                        <MdShoppingCart className="text-textColor text-2xl  cursor-pointer" />
+                        {cartItems && cartItems.length > 0 && (
+                            <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+                                <p className="text-xs text-white font-semibold">{cartItems.length}</p>
+                            </div>
+                        )}
                     </div>
                     <div className="relative">
                         <motion.img
@@ -100,7 +109,7 @@ const Header = () => {
                                 object-cover rounded-full cursor-pointer"
                             onClick={login}
                         />
-                        {ismenu && (
+                        {isMenu && (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.6 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -135,14 +144,13 @@ const Header = () => {
             </div>
             {/* Moblie */}
             <div className="flex md:hidden w-full items-center justify-between ">
-                <div className="relative flex items-center justify-center">
-                    <MdShoppingCart className="text-textColor text-2xl cursor-pointer" />
-                    <div
-                        className="absolute -top-3 -right-2 w-5 h-5 rounded-full
-                             bg-cartNumBg items-center justify-center flex "
-                    >
-                        <div className="text-xs text-white font-semibold">2</div>
-                    </div>
+                <div className="relative flex items-center justify-center" onClick={showCart}>
+                    <MdShoppingCart className="text-textColor text-2xl  cursor-pointer" />
+                    {cartItems && cartItems.length > 0 && (
+                        <div className=" absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
+                            <p className="text-xs text-white font-semibold">{cartItems.length}</p>
+                        </div>
+                    )}
                 </div>
                 <Link to={'/'} className="flex gap-2 items-center cursor-pointer">
                     <img alt="logo" src={Logo} className="w-10 object-cover" />
@@ -157,7 +165,7 @@ const Header = () => {
                             object-cover rounded-full cursor-pointer"
                         onClick={login}
                     />
-                    {ismenu && (
+                    {isMenu && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.6 }}
                             animate={{ opacity: 1, scale: 1 }}
