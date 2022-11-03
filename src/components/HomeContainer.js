@@ -33,31 +33,40 @@ const HomeContainer = () => {
                 </button>
             </div>
 
-            <div className="py-2 flex-1 flex items-center relative ">
-                <img src={HeroBg} className=" ml-auto h-420 w-full lg:w-auto lg:h-600 " alt="hero-bg" />
-                <div className=" absolute top-0 left-0 lg:-left-40 xl:-left-10 md:-left-16 flex items-center justify-center  lg:px-24 md:px-10 py-8 gap-4 g flex-wrap">
+            <div className="py-2 ssm:flex-1 ssm:flex items-center relative hidden  ">
+                <img src={HeroBg} className=" ml-auto h-420 w-full lg:w-auto lg:h-600  " alt="hero-bg" />
+                <div
+                    className=" absolute top-0 left-0 lg:-left-40  xl:-left-10 
+                         md:-left-16 flex items-center justify-center  lg:px-24 
+                         md:px-10 py-8 px-4 gap-4 flex-wrap "
+                >
                     {heroData &&
-                        heroData.map((item) => (
-                            <div
-                                key={item.id}
-                                className=" min-w-[160px] lg:w-[170px] md:min-w-[140px] xl:min-w-[190px] mt-8  lg:p-3 p-1 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center drop-shadow-lg"
-                            >
-                                <img
-                                    src={item.imageSrc}
-                                    className="w-20 lg:w-30 xl:w-40 -mt-10 lg:-mt-16 "
-                                    alt={item.name}
-                                />
-                                <p className="text-base font-semibold text-textColor mt-2 lg:mt-4">{item.name}</p>
+                        heroData.map((item) => {
+                            return (
+                                <div
+                                    key={item.id}
+                                    className=" min-w-[130px] sm:min-w-[160px] lg:w-[170px] sm:w-[110px] 
+                                    md:min-w-[140px] xl:min-w-[190px] mt-8  lg:p-3 p-1
+                                    bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col 
+                                    items-center justify-center drop-shadow-lg"
+                                >
+                                    <img
+                                        src={item.imageSrc}
+                                        className="w-20 lg:w-30 xl:w-40 -mt-10 md:-mt-12 lg:-mt-16 "
+                                        alt={item.name}
+                                    />
+                                    <p className="text-base font-semibold text-textColor mt-2 lg:mt-4">{item.name}</p>
 
-                                <p className="text-[12px]  text-lighttextGray font-semibold my-1 lg:my-3">
-                                    {item.description}
-                                </p>
+                                    <p className="text-[12px]  text-lighttextGray font-semibold my-1 lg:my-3">
+                                        {item.description}
+                                    </p>
 
-                                <p className="text-sm font-semibold text-headingColor">
-                                    <span className="text-xs text-red-600">$</span> {item.price}
-                                </p>
-                            </div>
-                        ))}
+                                    <p className="text-sm font-semibold text-headingColor">
+                                        <span className="text-xs text-red-600">$</span> {item.price}
+                                    </p>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
         </section>

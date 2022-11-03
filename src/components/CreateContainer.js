@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -208,7 +209,7 @@ const CreateContainer = () => {
                             ) : (
                                 <>
                                     <div className="relative h-full">
-                                        <image
+                                        <img
                                             src={imageAsset}
                                             alt="uploaded image"
                                             className="w-full h-full object-cover"
